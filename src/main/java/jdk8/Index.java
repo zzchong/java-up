@@ -475,6 +475,7 @@ public class Index {
 
         /**
          * The second reduce method accepts both an identity value and a BinaryOperator accumulato
+         * http://blog.csdn.net/io_field/article/details/54971679
          */
 
 
