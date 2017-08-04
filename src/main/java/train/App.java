@@ -4,6 +4,7 @@ package train;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -38,5 +39,21 @@ public class App {
         System.out.println(graph.getDistance("A","E","B","C","D"));
         //5 A-E-D
         System.out.println(graph.getDistance("A","E","D"));
+
+        //6
+        System.out.println(graph.getRoutes("C","C").getRoutesByStop(3,"<=").size());
+
+        //7
+        System.out.println(graph.getRoutes("A","C").getRoutesByStop(4).size());
+
+        //8
+        System.out.println(graph.getRoutes("A","C").getMinLength());
+
+        //9
+        System.out.println(graph.getRoutes("B","B").getMinLength());
+
+        //10
+        System.out.println(graph.getRoutes("C","C").getNumByLength(30d,"<"));
+
     }
 }
