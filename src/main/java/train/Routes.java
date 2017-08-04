@@ -2,8 +2,6 @@ package train;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
 
 /**
  * Created by Raytine on 2017/8/4.
@@ -22,7 +20,7 @@ public class Routes {
         this.routes = routes;
     }
 
-    public Routes(String fromTown, String toTown) {
+     Routes(String fromTown, String toTown) {
         this.fromTown = fromTown;
         this.toTown = toTown;
         this.routes = new ArrayList<>();
@@ -58,7 +56,11 @@ public class Routes {
         return 0;
     }
 
-
+    /**
+     * 根据停站点查询线路
+     * @param stop
+     * @return
+     */
      List<LinkedList<Route>> getRoutesByStop(Integer stop,String operation){
         if(!routes.isEmpty()){
             return routes.stream()
@@ -84,9 +86,21 @@ public class Routes {
         return  null;
     }
 
+    /**
+     * 根据停站点查询线路
+     * @param stop
+     * @return
+     */
     List<LinkedList<Route>> getRoutesByStop(Integer stop){
         return  getRoutesByStop(stop,"=");
     }
+
+
+    /**
+     * 查询两城之间最大或最小的距离
+     * @param maxOrMin
+     * @return
+     */
 
     Double getMaxOrMinLength (String maxOrMin){
 
@@ -113,6 +127,12 @@ public class Routes {
     }
 
 
+    /**
+     * 根据距离查线路数
+     * @param length
+     * @param operation
+     * @return
+     */
 
     Long getNumByLength(Double length,String operation){
         List<Double> doubles = getLength();
@@ -136,7 +156,7 @@ public class Routes {
     }
 
 
-    List<Double> getLength(){
+    private List<Double> getLength(){
         if(!routes.isEmpty()) {
             List<Double> doubles = new LinkedList<>();
             routes

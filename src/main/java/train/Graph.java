@@ -19,31 +19,20 @@ public class Graph {
         this.routes = routes;
     }
 
-    Route getDirectRoute(String startTown,String endTown){
 
-        if(routes.isEmpty())
-            return  null;
-
-        Optional<String> start = Optional.ofNullable(startTown);
-        Optional<String> end = Optional.ofNullable(endTown);
-
-        if(start.isPresent() && end.isPresent()) {
-            List<Route> givenRoutes = routes.stream()
-                    .filter(route -> route.getStartTown().equals(start.get()) && route.getEndTown().equals(end.get()))
-                    .collect(Collectors.toList());
-
-            if(!givenRoutes.isEmpty() && givenRoutes.size()>0)
-                return givenRoutes.get(0);
-            return null;
-        }
-
-        return  null;
-    }
 
     Routes getRoutes(String startTown,String endTown){
         return  getRoutes(startTown,endTown,100,20);
     }
 
+    /**
+     * 获取两城之间任意线路
+     * @param startTown
+     * @param endTown
+     * @param maxnumRoutes
+     * @param maxnumStop
+     * @return
+     */
     Routes  getRoutes(String startTown,String endTown,Integer maxnumRoutes,Integer maxnumStop){
         if(routes.isEmpty())
             return null;
@@ -65,8 +54,7 @@ public class Graph {
                       routeTemp.add(route);
                       if(route.getStartTown().equals(startTown))
                           returnList.add(routeTemp);
-                      else
-                          tempList.add(routeTemp);
+                       tempList.add(routeTemp);
                   });
 
             List<LinkedList<Route>> allRoutes = getPreviousRoutes(tempList,returnList,startTown,maxnumRoutes,maxnumStop);
@@ -78,6 +66,15 @@ public class Graph {
 
     }
 
+    /**
+     * 获取前节点线路
+     * @param tempList
+     * @param returnList
+     * @param startTown
+     * @param maxnumRoutes
+     * @param maxnumStop
+     * @return
+     */
     List<LinkedList<Route>> getPreviousRoutes(List<LinkedList<Route>> tempList,List<LinkedList<Route>> returnList,String startTown,Integer maxnumRoutes,Integer maxnumStop){
 
         if(tempList.isEmpty() || tempList.size()==0)
@@ -127,6 +124,11 @@ public class Graph {
     }
 
 
+    /**
+     * 根据线路查距离
+     * @param towns
+     * @return
+     */
     String getDistance(String ...towns){
         Double distance= 0d;
         Boolean isExist = true;
@@ -146,6 +148,48 @@ public class Graph {
         }
 
         return  isExist?distance.toString():"NO SUCH ROUTE";
+    }
+
+    /**
+     * 相邻两点之间的距离
+     * @param startTown
+     * @param endTown
+     * @return
+     */
+    Route getDirectRoute(String startTown,String endTown){
+
+        if(routes.isEmpty())
+            return  null;
+
+        Optional<String> start = Optional.ofNullable(startTown);
+        Optional<String> end = Optional.ofNullable(endTown);
+
+        if(start.isPresent() && end.isPresent()) {
+            List<Route> givenRoutes = routes.stream()
+                    .filter(route -> route.getStartTown().equals(start.get()) && route.getEndTown().equals(end.get()))
+                    .collect(Collectors.toList());
+
+            if(!givenRoutes.isEmpty() && givenRoutes.size()>0)
+                return givenRoutes.get(0);
+            return null;
+        }
+
+        return  null;
+    }
+
+
+    /**
+     * 清除缓存
+     * @param startTown
+     * @param endTown
+     */
+    void clearCache(String startTown,String endTown){
+        if(cache.containsKey(startTown + "-" + endTown))
+            cache.remove(startTown + "-" + endTown);
+    }
+
+    void clearCache(){
+            cache.clear();
     }
 
 }

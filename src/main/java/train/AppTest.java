@@ -1,54 +1,43 @@
 package train;
 
-
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by pc on 2017/8/4.
+ * Created by Raytine on 2017/8/5.
  */
-public class App {
+public class AppTest {
 
-    public static void main(String[] args)
-    {
-        //测试数据
-        String[] towns = new String[]{
-                "A,B,5",
-                "B,C,4",
-                "C,D,8",
-                "D,C,8",
-                "D,E,6",
-                "A,D,5",
-                "C,E,2",
-                "E,B,3",
-                "A,E,7",
-        };
+    /**
+     * test
+     */
+    @Test
+    public void trainTest(){
 
-        //创建线路
-        List<Route> routes = new LinkedList<>();
-        Arrays.stream(towns)
-                .forEach((String s) -> {
-                    routes.add(new Route(s.split(",")[0],s.split(",")[1],Double.valueOf(s.split(",")[2])));
-                });
+        List<Route> routes = Arrays.asList(
+                new Route("A","B", (double) 5),
+                new Route("B","C", (double) 4),
+                new Route("C","D", (double) 8),
+                new Route("D","C", (double) 8),
+                new Route("D","E", (double) 6),
+                new Route("A","D", (double) 5),
+                new Route("C","E", (double) 2),
+                new Route("E","B", (double) 3),
+                new Route("A","E", (double) 7)
+        );
 
-        //初始化线路图
         Graph graph = new Graph(routes);
 
         //1 A-B-C
         System.out.println(graph.getDistance("A","B","C"));
-
         //2 A-D
         System.out.println(graph.getDistance("A","D"));
-
         //3 A-D-C
         System.out.println(graph.getDistance("A","D","C"));
-
         //4 A-E-B-C-D
         System.out.println(graph.getDistance("A","E","B","C","D"));
-
         //5 A-E-D
         System.out.println(graph.getDistance("A","E","D"));
 
@@ -66,7 +55,6 @@ public class App {
 
         //10
         System.out.println(graph.getRoutes("C","C").getNumByLength(30d,"<"));
+
     }
-
-
 }
