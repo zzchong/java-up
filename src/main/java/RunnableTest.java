@@ -1,9 +1,12 @@
 import org.junit.Test;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -39,14 +42,39 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class RunnableTest {
 
+    static ConcurrentHashMap<String,Integer> map = new ConcurrentHashMap<>();
+
     public static void main(String [] args){
 
+        Integer c = new Integer(100);
+        Integer e =  100;
+        int f = 100;
+        System.out.println(c.equals(e));
+        System.out.println(c==e);
+        System.out.println(f==e);
+        System.out.println(e.equals(f));
+
+//
+//        Thread t1 = new Thread(new AddMapValue());
+//        Thread t2 = new Thread(new AddMapValue());
+//        t1.start();
+//        t2.start();
+
         //******** Synchronized test**********//
-        List list = new ArrayList();
-        Thread r = new Thread(new ReadList(list));
-        Thread w = new Thread(new WriteList(list));
-        r.start();
-        w.start();
+//        List list = new ArrayList();
+//        Thread r = new Thread(new ReadList(list));
+//        Thread w = new Thread(new WriteList(list));
+//        r.start();
+//        w.start();
+    }
+    static class  AddMapValue implements Runnable{
+
+
+        public void run() {
+          for (int i=0;i<1000;i++){
+              addString("key");
+          }
+        }
     }
 
     static class  ReadList implements Runnable{
@@ -111,5 +139,12 @@ public class RunnableTest {
         }
     }
 
+
+     static synchronized void  addString(String key){
+
+         map.put(key,map.containsKey(key)?map.get(key)+1:1);
+         System.out.println(Thread.currentThread().getName()+"-----------------"+map.get("key"));
+
+    }
 
 }
