@@ -1,4 +1,4 @@
-package designPatten.singleton;
+package design.patten.singleton;
 
 /**
  * Created by pc on 2017/10/9.
