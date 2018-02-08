@@ -7,7 +7,19 @@ package design.patten.factory;
  */
 public class Singleton {
 
+    private String memo;
+
     private Singleton(){}
 
-    public void doSomething(){}
+    public void print(){
+        System.out.println("我是通过---"+memo+"----");
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
 }

@@ -23,13 +23,10 @@ public class LazyFactory {
         AbstractProduct product = null;
 
         if(MAP.containsKey(type)){
-
             product = MAP.get(type);
-
         }else {
-
             product = new Product();
-
+            product.setMemo("延迟加载的工厂类");
             MAP.put(type,product);
         }
         return  product;

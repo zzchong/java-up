@@ -19,13 +19,14 @@ public class SingletonFactory {
     static {
         try {
 
-            Class c1 = Class.forName(SingletonPattern.class.getName());
+            Class c1 = Class.forName(Singleton.class.getName());
             //获得无参构造
             Constructor constructor = c1.getDeclaredConstructor();
 
             //设置无参构造是可访问的
             constructor.setAccessible(true);
             singleton = (Singleton)constructor.newInstance();
+            singleton.setMemo("单例类工厂");
         }catch (Exception e){
             e.printStackTrace();
         }

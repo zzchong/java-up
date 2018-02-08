@@ -43,21 +43,22 @@ public class FactoryPattern {
         AbstractFactory factory = new Factory();
         product = factory.createProduct(Product.class);
 
+        product.print();
         /*
             简单工厂模式创建对象的过程
          */
         product = SimpleFactory.createProduct(Product.class);
-
+        product.print();
         /*
             创建单例类对象的过程
          */
         Singleton singleton = SingletonFactory.getSingleton();
-
+        singleton.print();
         /*
             延迟加载创建对象的过程
          */
         product = LazyFactory.createProduct(Product.class.getName());
-
+        product.print();
 
         /*
             继续业务处理

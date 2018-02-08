@@ -7,6 +7,8 @@ package design.patten.factory;
  */
 public abstract class AbstractProduct {
 
+    String memo;
+
     /**
      * 产品类的公共方法
      */
@@ -17,5 +19,15 @@ public abstract class AbstractProduct {
     /**
      * 产品类其他方法
      */
-    public abstract void other();
+    public  void print(){
+        System.out.println("我是通过---"+memo+"----生成的");
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    void setMemo(String memo) {
+        this.memo = memo;
+    }
 }

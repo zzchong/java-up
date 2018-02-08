@@ -12,6 +12,7 @@ public class Factory extends AbstractFactory {
         Product product = null;
         try {
             product = (Product)Class.forName(c.getName()).newInstance();
+            product.setMemo("通用工厂模式");
         }catch (Exception e){
             e.printStackTrace();
         }

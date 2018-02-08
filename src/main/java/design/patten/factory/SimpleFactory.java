@@ -8,10 +8,11 @@ package design.patten.factory;
  */
 public class SimpleFactory {
 
-    public static Product createProduct(Class c) {
-        Product product = null;
+    public static AbstractProduct createProduct(Class c) {
+        AbstractProduct product = null;
         try {
             product = (Product)Class.forName(c.getName()).newInstance();
+            product.setMemo("简单工厂模式");
         }catch (Exception e){
             e.printStackTrace();
         }
