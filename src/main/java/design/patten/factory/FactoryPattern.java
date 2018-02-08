@@ -25,6 +25,13 @@ import java.lang.reflect.Constructor;
  *      ·延迟加载的工厂类  参见 LazyFactory
  * 建议：工厂模式在项目中使用的非常频繁，与其他模式混合（模板模式，单例模式，原型模式等）使用威力更大
  * @author zz_chong
+ * @see AbstractProduct 抽象产品类
+ * @see Product 具体产品类
+ * @see AbstractFactory 抽象工厂类
+ * @see Factory 具体工厂类
+ * @see SimpleFactory 简单工厂模式
+ * @see SingletonFactory 替代单例模式
+ * @see LazyFactory 延迟加载的工厂类
  */
 public class FactoryPattern {
 
