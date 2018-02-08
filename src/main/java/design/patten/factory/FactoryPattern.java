@@ -20,7 +20,10 @@ import java.lang.reflect.Constructor;
  *      ·解耦框架
  * 扩展：
  *      ·简单工厂模式（静态工厂模式）  参见 SimpleFactory
- *      ·多工厂模式
+ *      ·多工厂模式 每个产品类对应一个工厂类（这样会给可扩展性和可维护性带来一定的影响，一般是再增加一个协调类，封装子工厂类，对高层模块提供统一的访问接口）
+ *      ·替代单例模式  单例类 参见Singleton   单例类工厂 参见SingletonFactory
+ *      ·延迟加载的工厂类  参见 LazyFactory
+ * 建议：工厂模式在项目中使用的非常频繁，与其他模式混合（模板模式，单例模式，原型模式等）使用威力更大
  * @author zz_chong
  */
 public class FactoryPattern {
@@ -37,31 +40,22 @@ public class FactoryPattern {
             简单工厂模式创建对象的过程
          */
         product = SimpleFactory.createProduct(Product.class);
+
+        /*
+            创建单例类对象的过程
+         */
+        Singleton singleton = SingletonFactory.getSingleton();
+
+        /*
+            延迟加载创建对象的过程
+         */
+        product = LazyFactory.createProduct(Product.class.getName());
+
+
         /*
             继续业务处理
          */
-    }
-    /**
-     *     工厂类生产单例对象
-     */
-    private static SingletonPattern singletonPattern;
 
-    static {
-        try {
-
-            Class c1 = Class.forName(SingletonPattern.class.getName());
-            //获得无参构造
-            Constructor constructor = c1.getDeclaredConstructor();
-
-            //设置无参构造是可访问的
-            constructor.setAccessible(true);
-            singletonPattern = (SingletonPattern)constructor.newInstance();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
-    public static SingletonPattern getSingletonPattern() {
-        return singletonPattern;
-    }
 }
