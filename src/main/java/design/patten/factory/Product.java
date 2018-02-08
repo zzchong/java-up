@@ -7,4 +7,8 @@ package design.patten.factory;
  */
 public class Product extends AbstractProduct{
 
+    @Override
+    public void other() {
+
+    }
 }
