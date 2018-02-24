@@ -15,5 +15,5 @@ public abstract class AbstractFactory {
      */
     public abstract Product createProduct(Class c);
 
-//    public abstract <T extends Product> T createProduct(Class<T> c);
+//    public abstract <T extends ProductOne> T createProduct(Class<T> c);
 }

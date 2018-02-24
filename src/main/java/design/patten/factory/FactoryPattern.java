@@ -10,7 +10,7 @@ import java.lang.reflect.Constructor;
  * 定义：一个用于创建对象的接口，让子类决定实例化哪一个类。
  * 使用：工厂方法模式通常有四种角色，如下
  *          ·抽象产品类(AbstractProduct)  定义要被创建的对象的共性
- *          ·具体产品类(Product)  继承自抽象产品类，定义要被创建的对象
+ *          ·具体产品类(ProductOne)  继承自抽象产品类，定义要被创建的对象
  *          ·抽象工厂类(AbstractFactory)
  *          ·具体工厂类(Factory)
  * 优点：
