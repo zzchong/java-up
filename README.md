@@ -7,7 +7,7 @@
 
 ## 模块
 1. annotation:注解相关（尚未开始）
-2. design:设计模式相关（参考《设计模式之禅》一书，作者秦小波）
+2. design:设计模式相关（参考《设计模式之禅》一书，作者秦小波），每个模式的入口为 XxxxPattern
 3. jdk8:jdk8相关
 4. spring:spring相关
 
