@@ -10,11 +10,31 @@ public class ByteOperation {
 
     public static void main(String[] args)
     {
+        try {
+            String ss = throwsTest();
+            System.out.println("ss="+ss);
+        }catch (Exception e){
+            System.out.println("sss="+e.getMessage());
+        }
         int a=2;
         System.out.println("a 非的结果是："+(~a));
 
         System.out.println(Integer.parseInt("0001111",2) & 15);
         System.out.println(Integer.parseInt("0011111",2) & 15);
+    }
+
+    private static  String throwsTest(){
+        try{
+            System.out.println("dddd");
+            int i = 1/0;
+            return  "ddd";
+        }
+        catch(Exception e){
+            throw new RuntimeException("ddddd");
+        }
+        finally{
+            System.out.println("aaaaa");
+        }
     }
 
 }
