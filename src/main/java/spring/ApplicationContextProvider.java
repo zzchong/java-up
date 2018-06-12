@@ -20,6 +20,10 @@ public class ApplicationContextProvider implements ApplicationContextAware{
         ApplicationContextProvider.applicationContext = applicationContext;
     }
 
+    /*
+        多此一举 setApplicationContext中的application即为运行的应用上下文,会在bean初始化之前调用
+     */
+    @Deprecated
     public static void initApplicationContext(ApplicationContext applicationContext) throws BeansException {
         ApplicationContextProvider.applicationContext = applicationContext;
     }

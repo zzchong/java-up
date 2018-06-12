@@ -18,6 +18,10 @@ public class App {
 
 
     public static void main(String [] args){
+        SpringApplication.run(App.class, args);
+        /*
+            以下方法多此一举
+         */
         ApplicationContextProvider.initApplicationContext(SpringApplication.run(App.class, args));
         ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1, new BasicThreadFactory.Builder().namingPattern("pool-&d").daemon(true).build());
         executorService.execute(()->{
