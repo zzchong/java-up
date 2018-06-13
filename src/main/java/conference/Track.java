@@ -1,5 +1,4 @@
 package conference;
-
 import java.util.LinkedList;
 
 /**
@@ -8,5 +7,18 @@ import java.util.LinkedList;
  */
 public class Track {
 
-    LinkedList<Talk> talks = new LinkedList<>();
+
+    private LinkedList<Talk> talks = new LinkedList<>();
+
+    public String print(){
+        StringBuilder sb = new StringBuilder();
+        if(talks==null || talks.size()>0){
+            return  "no talks";
+        }
+        for (int i=0,len=talks.size();i<len;i++){
+            Talk talk = talks.get(i);
+            sb.append(talk.print()).append("\r\n");
+        }
+        return sb.toString();
+    }
 }
