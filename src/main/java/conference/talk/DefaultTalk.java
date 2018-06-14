@@ -36,6 +36,7 @@ public class DefaultTalk implements Talk{
         if(previousTalks==null) {
             previousTalks = new LinkedList<>();
         }
+        previousTalks.add(previousTalk);
         return this;
     }
 
