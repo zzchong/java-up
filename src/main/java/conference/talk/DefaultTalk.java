@@ -1,4 +1,4 @@
-package conference.support;
+package conference.talk;
 
 import conference.Talk;
 
@@ -32,7 +32,7 @@ public class DefaultTalk implements Talk{
         return time;
     }
 
-    private Talk addPreviousTalk(Talk previousTalk) {
+    public Talk addPreviousTalk(Talk previousTalk) {
         if(previousTalks==null) {
             previousTalks = new LinkedList<>();
         }
@@ -44,12 +44,6 @@ public class DefaultTalk implements Talk{
         return previousTalks;
     }
 
-    /**
-     * 是否有前继
-     * @return true 有 false 没有
-     */
-    private boolean hasPrevious(){
-        return previousTalks!=null && previousTalks.size()>0;
-    }
+
 
 }

@@ -10,8 +10,11 @@ import java.util.List;
 public interface Rule {
 
     /**
-     * 计划策略
-     * @param talks talks
+     * 计划安排talk有很多策略，(默认为OrderRule，根据输入的顺序依次来安排)
+     * @param talks 所有的talk
+     * @return 根据当前策略计划好的track
      */
     List<Track> createTrack(List<Talk> talks);
+
+
 }

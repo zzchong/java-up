@@ -1,9 +1,10 @@
-package conference.support;
+package conference.trackManagement;
 
 import conference.Rule;
 import conference.Talk;
 import conference.Track;
 import conference.TrackManagement;
+import conference.rule.OrderRule;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,13 +20,13 @@ public class DefaultTrackManagement implements TrackManagement {
 
     private List<Track> tracks = new LinkedList<>();
 
-    private LinkedList<Talk> talks = null;
+    private List<Talk> talks = null;
 
-    public DefaultTrackManagement(LinkedList<Talk> talks) {
+    public DefaultTrackManagement(List<Talk> talks) {
         this(talks,new OrderRule());
     }
 
-    public DefaultTrackManagement(LinkedList<Talk> talks,Rule rule) {
+    public DefaultTrackManagement(List<Talk> talks,Rule rule) {
         this.talks = talks;
         this.rule = rule;
     }
@@ -39,9 +40,13 @@ public class DefaultTrackManagement implements TrackManagement {
         return print();
     }
 
+    /**
+     * 打印track 信息
+     * @return track 信息
+     */
     private String print(){
         StringBuilder sb = new StringBuilder();
-        if(tracks==null || tracks.size()>0){
+        if(tracks==null || tracks.size()==0){
             return  "no tracks";
         }
         for (int i=0,len=tracks.size();i<len;i++){

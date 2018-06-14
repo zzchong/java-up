@@ -28,7 +28,19 @@ public interface Talk {
      */
     List getPreviousTalks();
 
+    /**
+     * 默认方法打印信息
+     * @return 打印信息
+     */
     default String print(){
         return getTitle()+"  "+getTime()+"min";
+    }
+
+     /**
+     * 是否有前继
+     * @return true 有 false 没有
+     */
+    default boolean hasPrevious(){
+        return getPreviousTalks()!=null && getPreviousTalks().size()>0;
     }
 }

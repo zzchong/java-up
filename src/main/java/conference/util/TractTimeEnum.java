@@ -1,10 +1,10 @@
-package conference.support;
+package conference.util;
 
 /**
  * Created by pc on 2018/6/13.
  * @author zzc
  */
-public enum TractTime {
+public enum TractTimeEnum {
     /**
         最大时间
      */
@@ -31,7 +31,7 @@ public enum TractTime {
     MIN_AFTERNOON_TIME(180),
     ;
 
-    TractTime(int time) {
+    TractTimeEnum(int time) {
         this.time = time;
     }
 
@@ -41,7 +41,4 @@ public enum TractTime {
         return time;
     }
 
-    public void setTime(int time) {
-        this.time = time;
-    }
 }

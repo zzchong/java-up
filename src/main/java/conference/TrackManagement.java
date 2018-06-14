@@ -7,7 +7,8 @@ package conference;
 public interface TrackManagement {
 
     /**
-     * 开始规划Programming
+     * plan talk
+     * @return 返回安排好的talk信息
      */
     String startPlanProgramming();
 }
