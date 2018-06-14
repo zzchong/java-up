@@ -52,9 +52,7 @@ public class OrderRule implements Rule {
    private void  resizeTracks(){
         Track[] oldTracks = tracks;
         Track[] newTracks =  new Track[tracks.length+1];
-        for(int i=0;i<oldTracks.length;i++){
-            newTracks[i] = oldTracks[i];
-        }
+        System.arraycopy(oldTracks, 0, newTracks, 0, oldTracks.length);
         tracks = newTracks;
     }
 
