@@ -1,4 +1,5 @@
-package conference;
+package conference.track;
+import conference.Talk;
 import conference.support.TrackSupport;
 import conference.util.TractTimeEnum;
 

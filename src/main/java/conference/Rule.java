@@ -1,5 +1,7 @@
 package conference;
 
+import conference.track.Track;
+
 import java.util.List;
 
 /**
@@ -15,6 +17,5 @@ public interface Rule {
      * @return 根据当前策略计划好的track
      */
     List<Track> createTrack(List<Talk> talks);
-
 
 }

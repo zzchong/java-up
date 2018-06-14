@@ -2,7 +2,7 @@ package conference.trackManagement;
 
 import conference.Rule;
 import conference.Talk;
-import conference.Track;
+import conference.track.Track;
 import conference.TrackManagement;
 import conference.rule.OrderRule;
 

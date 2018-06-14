@@ -2,7 +2,7 @@ package conference.rule;
 
 import conference.Rule;
 import conference.Talk;
-import conference.Track;
+import conference.track.Track;
 import conference.support.TrackSupport;
 import conference.util.TractTimeEnum;
 

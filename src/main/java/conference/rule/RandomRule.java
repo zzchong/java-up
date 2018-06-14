@@ -2,14 +2,11 @@ package conference.rule;
 
 import conference.Rule;
 import conference.Talk;
-import conference.Track;
+import conference.track.Track;
 import conference.support.TrackSupport;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 在可选范围内随机安排talk
