@@ -25,23 +25,13 @@ public class OrderRule implements Rule {
         return Arrays.asList(tracks);
     }
 
-
-    private void initTrack(int amount){
-        if(amount!=0) {
-            int num = amount% TractTimeEnum.MAX_TIME.getTime()== 0 ? amount/ TractTimeEnum.MAX_TIME.getTime() : amount/ TractTimeEnum.MAX_TIME.getTime()+ 1;
-            tracks = new Track[num];
-            for(int i=0;i<num;i++){
-                tracks[i]=new Track();
-            }
-        }
-    }
-
     private void doPlaning(List<Talk> talks){
         for (Talk talk : talks) {
             int time = talk.getTime(), trackIndex = 0;
             while (trackIndex >= 0) {
                 if (trackIndex >= tracks.length) {
-                    tracks[tracks.length + 1] = new Track();
+                    resizeTracks();
+                    tracks[trackIndex] = new Track();
                 }
                 Track track = tracks[trackIndex];
                 if (track.getRestMorningTime() >= time) {
@@ -58,5 +48,26 @@ public class OrderRule implements Rule {
             }
         }
     }
+
+   private void  resizeTracks(){
+        Track[] oldTracks = tracks;
+        Track[] newTracks =  new Track[tracks.length+1];
+        for(int i=0;i<oldTracks.length;i++){
+            newTracks[i] = oldTracks[i];
+        }
+        tracks = newTracks;
+    }
+
+    private void initTrack(int amount){
+        if(amount!=0) {
+            int num = amount% TractTimeEnum.MAX_TIME.getTime()== 0 ? amount/ TractTimeEnum.MAX_TIME.getTime() : amount/ TractTimeEnum.MAX_TIME.getTime()+ 1;
+            tracks = new Track[num];
+            for(int i=0;i<num;i++){
+                tracks[i]=new Track();
+            }
+        }
+    }
+
+
 
 }

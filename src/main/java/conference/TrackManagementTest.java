@@ -39,12 +39,12 @@ public class TrackManagementTest {
         /*
             使用默认策略
          */
-//        TrackManagement trackManagement = new DefaultTrackManagement(talks);
+        TrackManagement trackManagement = new DefaultTrackManagement(talks);
 
         /*
             使用随机策略
          */
-        TrackManagement trackManagement = new DefaultTrackManagement(talks,new RandomRule());
+//        TrackManagement trackManagement = new DefaultTrackManagement(talks,new RandomRule());
         System.out.println(trackManagement.startPlanProgramming());
     }
 }

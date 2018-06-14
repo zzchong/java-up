@@ -1,0 +1,31 @@
+注:本程序在JDK8环境下测试运行
+
+运行:TrackManagementTest.java文件即可
+
+
+代码说明:
+    代码整体分为四个部分：
+    （1）talk
+    （2）track
+     (3) rule
+     (4) trackManagement
+
+思路：
+    talk:（1）将talk扩展了两个标记接口，MorningTalk和AfternoonTalk，以此来应对将来出现某些talk只能在早上或者下午的情况。
+         （2）设计了getPreviousTalks()方法，将来有可能会有某些talk必须在一些其他talk结束之后才能开始的情况。
+   track: (1) 维护了两个talk列表（morningTalks 和 afternoonTalks）。
+         （2）维护了早上剩余时间(restMorningTime)和晚上下午剩余时间(restAfternoonMaxTime),依次来作为talk安排的前提条件。
+    rule:（1）设计了一个createTrack()方法，rule实现了真正的计划talk的规则
+         （2）默认实现了两个规则:OrderRule和RandomRule
+                OrderRule:（1）根据输入的所有talk的time,计算出至少需要track的数量，并初始化。
+                          （2）根据talk输入顺序，依次为talk安排track,如果所有track都安排不了talk，则对track数组扩容，然后新建一个track对talk进行安排,直到所有talk安排完毕。
+               RandomRule: (1) 将输入的所有talk按照time从大到小排序
+                          （2）根据当前track的restMorningTime和restAfternoonMaxTime，计算出可以安排talk的索引范围
+                          （即遍历talks，第一个talk的time小于等于restMorningTime或者restAfternoonMaxTime的索引值到talks.size()的范围），
+                          然后在此范围随机取得一个索引值，安排到当前track中，并将已安排的talk从talks中删除。直到talks.size()==0,即所有talks安排完毕。
+                          这种安排策略可以让track中talk的时间间隔尽可能紧凑.
+          (3) 还可以实现更多的策略
+    trackManagement:(1)默认使用OrderRule策略来安排talk
+                    (2)可以在创建trackManagement的时候指定特定的安排策略rule（比如RandomRule）
+                   （3）可以实现更多不同的track管理器
+
